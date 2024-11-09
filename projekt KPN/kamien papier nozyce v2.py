@@ -1,8 +1,11 @@
 import random
 
-wygrana = open('projekt KPN\wygrana.txt', 'r')
-przegrana = open('projekt KPN\przegrana.txt', 'r')
-remis = open('projekt KPN\Remis.txt', 'r')
+with open('projekt KPN\wygrana.txt', 'r') as f:
+    wygrana = f.read()
+with open('projekt KPN\przegrana.txt', 'r') as f:
+    przegrana = f.read()
+with open('projekt KPN\Remis.txt', 'r') as f:
+    remis = f.read()
 
 
 def gra():
@@ -10,14 +13,14 @@ def gra():
     computer = random.choice(['k', 'p', 'n'])
  
     if user == computer:
-        return print(remis.read())
+        return remis
 
     if win(user, computer):
-        return print(wygrana.read())
+        return wygrana
          
 
     
-    return print(przegrana.read())
+    return przegrana
 
 def win(gracz, przeciwnik):
     if (gracz == 'k' and przeciwnik == 'n') or (gracz == 'n' and przeciwnik == 'p') or (gracz == 'p' and przeciwnik == 'k'):
